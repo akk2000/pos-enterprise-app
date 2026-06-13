@@ -7,6 +7,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(title="POS Enterprise API")
 
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -14,6 +15,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 DB_HOST = os.getenv("DB_HOST", "localhost")
 DB_NAME = os.getenv("DB_NAME", "posdb")
@@ -40,7 +42,6 @@ class OrderPayload(BaseModel):
     total: float
 
 
-# --- API Endpoints ---
 
 @app.get("/")
 def read_root():
