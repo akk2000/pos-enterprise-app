@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  # ၁။ Data Tier
+  postgres-db:
+    build: ./database
+    container_name: pos-database-compose
+    environment:
+      POSTGRES_USER: posuser
+      POSTGRES_PASSWORD: possecret
+      POSTGRES_DB: posdb
+    volumes:
+      - pos-enterprise-volume:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  # ၂။ Logic Tier
+  fastapi-backend:
+    build: ./backend
+    container_name: pos-backend-compose
+    ports:
+      - "8000:8000"
+    environment:
+      DB_HOST: postgres-db  
+      DB_NAME: posdb
+      DB_USER: posuser
+      DB_PASSWORD: possecret
+    depends_on:
+      - postgres-db         
+
+  # ၃။ Presentation Tier
+  react-frontend:
+    build: ./frontend
+    container_name: pos-frontend-compose
+    ports:
+      - "8080:80"
+    depends_on:
+      - fastapi-backend
+
+volumes:
+  pos-enterprise-volume:    
