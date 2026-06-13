@@ -34,7 +34,7 @@ function App() {
       <div style={{ display: 'flex', gap: '20px' }}>
         {}
         <div style={{ flex: 2 }}>
-          <h2>🍕 Menu Items (From Database)</h2>
+          <h2 style={{ color: '#333', marginBottom: '20px' }}>🍕 Menu Items (From Database)</h2>
           {loading ? <p>Loading menu...</p> : (
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))', gap: '15px' }}>
               {products.map((product) => (
@@ -52,7 +52,7 @@ function App() {
 
         {}
         <div style={{ flex: 1, backgroundColor: '#fff', padding: '20px', borderRadius: '8px', border: '1px solid #ddd', height: 'fit-content', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-          <h2>🛒 Current Order</h2>
+          <h2 style={{ color: '#333', marginBottom: '20px' }}>🛒 Current Order</h2>
           {cart.length === 0 ? <p style={{ color: '#999' }}>No items added yet.</p> : (
             <div>
               <ul style={{ listStyle: 'none', padding: 0 }}>
