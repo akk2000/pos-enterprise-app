@@ -8,7 +8,6 @@ def read_root():
 
 @app.get("/products")
 def get_products():
-    # ဒါက နောက်ပိုင်း DB နဲ့ ချိတ်ရင် Dynamic ဖြစ်သွားမယ့် Static data အစမ်းပါ
     return [
         {"id": 1, "name": "Coffee", "price": 3.50},
         {"id": 2, "name": "Burger", "price": 5.99}
